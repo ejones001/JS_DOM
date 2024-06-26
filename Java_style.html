@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Styling with JavaScript</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            color: white;
+            text-align: center;
+            line-height: 200px;
+            cursor: pointer;
+            transition: transform 0.3s ease; /* Smooth scaling transition */
+        }
+        .box:hover {
+            background-color: darkblue;
+            transform: scale(1.1); /* Scale up on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Styling Example</h1>
+    <div class="box" onclick="changeColor()">Click me to change color</div>
+
+    <script>
+        // JavaScript code
+        function changeColor() {
+            let box = document.querySelector('.box');
+            let randomColor = getRandomColor();
+            box.style.backgroundColor = randomColor;
+        }
+
+        function getRandomColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Additional styling changes based on user interaction
+        let box = document.querySelector('.box');
+        box.addEventListener('mouseenter', function() {
+            box.style.transform = 'scale(1.1)';
+        });
+
+        box.addEventListener('mouseleave', function() {
+            box.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>

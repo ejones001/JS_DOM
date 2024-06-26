@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Product Display</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Information</h1>
+    <div id="product-list">
+        <!-- Product information will be displayed here -->
+    </div>
+
+    <script>
+        // Array containing product information
+        let products = [
+            { name: "Laptop", price: 999.99, description: "Powerful computing on the go" },
+            { name: "Smartphone", price: 699.99, description: "Stay connected wherever you are" },
+            { name: "Headphones", price: 149.99, description: "Immersive audio experience" }
+        ];
+
+        // Function to display products dynamically
+        function displayProducts() {
+            let productList = document.getElementById('product-list');
+
+            // Clear any existing content
+            productList.innerHTML = '';
+
+            // Loop through the products array and create HTML for each product
+            products.forEach(product => {
+                let productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+
+                let productName = document.createElement('h3');
+                productName.textContent = product.name;
+
+                let productPrice = document.createElement('p');
+                productPrice.textContent = `Price: $${product.price}`;
+
+                let productDescription = document.createElement('p');
+                productDescription.textContent = product.description;
+
+                // Append elements to productDiv
+                productDiv.appendChild(productName);
+                productDiv.appendChild(productPrice);
+                productDiv.appendChild(productDescription);
+
+                // Append productDiv to productList
+                productList.appendChild(productDiv);
+            });
+        }
+
+        // Event listener to trigger displayProducts function when page loads
+        window.addEventListener('load', displayProducts);
+    </script>
+</body>
+</html>
